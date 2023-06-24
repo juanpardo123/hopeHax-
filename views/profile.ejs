@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/style.css">
+    <title>Main</title>
+</head>
+<body>
+    <%- include('../public/runTimeScripts/theme.ejs') %>
+    <%- include('./partials/nav.ejs') %>
+    <article>
+        <h1>User info:</h1>
+        <div class="card">
+            <div class="holder">
+                <img src="/images/profile.svg" class="profile">
+                <form action="/logOut" method="post">
+                    <input type="submit" value="LogOut" class="add">
+                </form>
+            </div>
+            
+            <div class="vertical">
+                <form action="/editInfo" method="post">
+                    <h2>Username:</h2>
+                    <input type="text" value="<%=userData.User_name%>"  disabled >
+                    <h2>height (ft):</h2>
+                    <input type="text" value="<%=userData.User_height%>" name="height" disabled class="noShow">
+                    <h2>weight (Lb):</h2>
+                    <input type="text" value="<%=userData.User_weight%>" name="weight" disabled class="noShow">
+                    <h2>Target Calories:</h2>
+                    <input type="text" value="<%=userData.User_target_calories%>" name="target" disabled class="noShow">
+                    <h2>Theme:</h2>
+                    <p>Current Theme: <%=userData.User_preferences%> </p>
+                    <input type="radio" id="theme1" name="theme" value="watermelon" disabled class="noShow">
+                    <label for="theme1">watermelon</label><br>
+                    <input type="radio" id="theme2" name="theme" value="purple" disabled class="noShow">
+                    <label for="theme2">purple</label><br>  
+                    <input type="radio" id="theme3" name="theme" value="cyan" disabled class="noShow">
+                    <label for="theme3">cyan</label><br><br>
+                    <input type="radio" id="theme3" name="theme" value="lightBlue" disabled class="noShow">
+                    <label for="theme3">green</label><br><br>
+                    <input type="radio" id="theme3" name="theme" value="pumpking" disabled class="noShow">
+                    <label for="theme3">green</label><br><br>
+                    <input type="radio" id="theme3" name="theme" value="mango" disabled class="noShow">
+                    <label for="theme3">green</label><br><br>
+                    <div class="sub-holder">
+                        <div id="themes" class="add"><p>edit</p></div>
+                        <input type="submit" value="Submit" class="hid submit ">
+                    </div>
+                
+                </form>
+              
+           
+        
+            </div>
+        </div>
+    </article>
+    <script>
+        let button = document.querySelector('#themes');
+        let input = document.querySelectorAll('.noShow');
+        let submit = document.querySelector('.submit');
+        let edit = false;
+        button.style.backgroundColor = 'blue';
+        button.addEventListener("click", function(){
+            if(!edit){
+                button.innerText = "cancel";
+                button.style.backgroundColor = 'red';
+                edit = !edit
+                submit.classList = 'add submit';
+            }else{
+                button.innerText = "edit";
+                button.style.backgroundColor = 'blue';
+                edit = !edit
+                submit.classList = 'hid submit';
+            }
+                
+                input.forEach(e=>{
+                if (edit){
+                    e.classList = 'noShow show'
+                }else{
+                    e.classList = 'noShow'
+                }
+                e.disabled = (!e.disabled)
+        })
+        });
+
+       
+    </script>
+</body>
+<style>
+    .holder{
+        display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    width: 300px;
+    /* padding: 3px; */
+    justify-content: flex-start;
+    align-items: center;
+    }
+</style>
+</html>

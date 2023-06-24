@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <title>Main</title>
+  </head>
+  <body>
+    <nav>
+      <form action="/recipeItems" method="post">
+        <input
+          type="text"
+          name="query"
+          id="search"
+          placeholder="Search A Recipe"
+        />
+        <button type="submit" class="button">Search</button>
+      </form>
+      <img src="/images/profile.svg" class="profile" />
+    </nav>
+
+    <side-nav>
+      <img src="/images/log.png" class="logo" />
+      <a href="/"
+        ><img src="/images/dashboard.svg" class="side-icons active-icon"
+      /></a>
+      <a href="/"><img src="/images/news.svg" class="side-icons" /></a>
+      <a href="/"> <img src="/images/music-album.svg" class="side-icons" /></a>
+      <!-- <a href="/"> <img src="/images/star.svg" class="side-icons" /></a> -->
+    </side-nav>
+    <article>
+      <p>Hello Ronda!</p>
+      <h1>Healthy Recipes</h1>
+      <div class="recipeButtonsContainer">
+        <form action="/recipeItems" method="post" >
+          <input type="text" value="breakfast" name="query" class="hid">
+          <input type="submit" value="Breakfast" class="rb breakfast" >
+        </form>
+       
+        <form action="/recipeItems" method="post" >
+          <input type="text" value="lunch" name="query" class="hid">
+          <input type="submit" value="Lunch" class="rb lunch" >
+        </form>
+        <form action="/recipeItems" method="post" >
+          <input type="text" value="dinner" name="query" class="hid">
+          <input type="submit" value="Dinner"  class="rb dinner" >
+        </form>
+       <form action="/recipeItems" method="post" >
+          <input type="text" value="snack" name="query" class="hid">
+          <input type="submit" value="Snacks" class="rb snacks" >
+        </form>
+     <form action="/recipeItems" method="post" >
+          <input type="text" value="random" name="query" class="hid">
+          <input type="submit" value="All"
+           class="rb allrecipes" >
+        </form>
+      </div>
+      <div id="recipeTopSection">
+        <h2> Healthy Starts With Food! </h2>
+        <h3>
+         Healthy eating is the foundation for a vibrant life. By choosing nutritious and balanced meals, we nourish our bodies and enhance overall well-being. Incorporating fresh fruits, vegetables, whole grains, lean proteins, and healthy fats into our diet promotes optimal health. It's essential to prioritize portion control and avoid processed foods, excessive sugar, and unhealthy fats. Embracing healthy eating habits can boost energy levels, support weight management, strengthen the immune system, and reduce the risk of chronic diseases.
+        </h3>
+      </div>
+      <!-- FOOD WHEEL SIDE IMAGE -->
+      <div id="recipeMidSection">
+        <img
+          src="/images/foodGroups.png"
+          class="foodWheel"
+          alt="Food Wheel Image"
+        />
+
+        <div id="recipeCatalog">
+     
+
+          <h1>Search For A Recipe!</h1>
+
+          <img src="/images/recipeMainImage.jpeg" class="recipeMainImage" />
+
+          <form action="/recipeItems" method="post">
+            <input
+              type="text"
+              name="query"
+              id="recipeSearch"
+              placeholder="Find A Recipe"
+            />
+            <button type="submit" class=" rb button2">Search</button>
+          </form>
+        </div>
+      </div>
+      <div id="recipeTopSection">
+        <!-- <h2>Nutrition is a Key Component for Your Health</h2> -->
+        <h3>
+          Proper nutrition involves consuming a variety of fruits, vegetables, whole grains, lean proteins, and healthy fats. These foods provide essential nutrients like vitamins, minerals, and antioxidants, supporting optimal health and reducing the risk of diseases like heart disease and cancer.
+        </h3>
+      </div>
+
+      <div class="favRecipesCardsContainer">
+        <div class="favRecipesCards">
+          <div class="desc calories">
+          
+          </div>
+          
+          <img
+            src="/images/healthyFood.png"
+            alt="An Image of Food"
+            class="favImage"
+          />
+          <div class="favRecipeHolder">
+            <h5 id="favRecipeText">What You Put In Your Body</h5>
+            <p class="recipeText">
+              Everything you eat and drink affects you in different ways. It can
+              nourish and support your body and brain or it can be a toxin. By
+              learning how different foods, beverages, and individual nutrients
+              affect you, you can create a diet that supports your specific
+              health goals.
+            </p>
+          </div>
+        </div>
+
+        <div class="favRecipesCards">
+          
+          <img
+            src="/images/selfcarerecipes.jpg"
+            alt="An Image of Food"
+            class="favImage"
+          />
+          <div class="favRecipeHolder">
+            <h5 id="favRecipeText">What You Put On Your Body</h5>
+            <p class="recipeText">
+              What’s in the lotions, hair products, and makeup you put on your
+              body? Or the air fresheners and cleaning products you breathe in
+              every day? Many of these have ingredients that affect your
+              hormones and damage your DNA. Replacing these everyday items with
+              safer ones removes harmful toxins from your body.
+            </p>
+          </div>
+        </div>
+        <div class="favRecipesCards">
+          
+          <img
+            src="/images/restrecipe.jpeg"
+            alt="An Image of Food"
+            class="favImage"
+          />
+          <div class="favRecipeHolder">
+            <h5 id="favRecipeText">How You Rest Your Body</h5>
+            <p class="recipeText">
+              Your body has to rest and recharge every day. Poor quality sleep
+              and too much stress not only wear you down, but also affect
+              everything from your hormonal balance to how your mind works.
+              Improving your sleep and reducing stress has major trickle-down
+              effects for your health.</p>
+            </p>
+          </div>
+        </div> 
+        <div class="favRecipesCards">
+         
+          <img
+            src="/images/carerecipe.jpeg"
+            alt="An Image of Food"
+            class="favImage"
+          />
+          <div class="favRecipeHolder">
+             <h5 id="favRecipeText">How You Care For Your Body</h5>
+            <p class="recipeText">Healing is an ongoing, holistic process. That means to feel better, live better, and achieve better health, all of your parts — body, mind, and spirit — have to be in balance. You’ll learn how to identify the root problems that are causing your symptoms and implement ways to change them.</p>
+          </div>
+        </div>
+      </div>
+     
+    </article>
+  </body>
+</html>

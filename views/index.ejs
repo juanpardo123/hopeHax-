@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/style.css">
+    <title>Main</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/themes/light.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/shoelace-autoloader.js"></script>
+</head>
+<body>
+    <%- include('../public/runTimeScripts/theme.ejs') %>
+    <%- include('./partials/nav.ejs') %>
+    <article>
+        <p>Hello <%=userData.User_name%>!!</p>
+        <h1>Dashboard:</h1>
+        <div class="slideshow">
+            <div class="round-button">
+                <div class="rbutton">
+
+                </div>
+                <div class="rbutton">
+
+                </div>
+                <div class="rbutton">
+
+                </div>
+            </div>
+            <div class="note-card">
+                <div class="note first">
+                    <video src="/images/vid.mp4"
+                            muted class="vid1 vid" >
+                        </video>
+                </div>
+                <div class="note second">
+                    <video src="/images/vid2.mp4"
+                            muted class="vid2 vid" >
+                        </video>
+                </div>
+                <div class="note thrird">
+                    <video src="/images/vid3.mp4"
+                            muted class="vid3 vid" >
+                        </video>
+                </div>
+            </div>
+            
+        </div>
+        <div class="horizontal">
+            <div class="vertical dashboard">
+             
+                
+                <h1 class="overview">Daily overview:</h1>
+                <div class="chart">
+                    <canvas id="myChart"><h1>hello</h1></canvas>
+                  </div>
+                <h2 class="overview">Total Nutrients:</h2>
+                  <div class="chart">
+                    <canvas id="lineGraph"><h1>hello</h1></canvas>
+                  </div>
+            </div>
+            
+            <div class="vertical">
+                <div class="card food-history">
+                    <h1>Food history</h1>
+                    <p>recently added</p>
+             <% foodData.forEach(e=>{ %>
+                <div class="food-holder">
+                    <h5><%=e.Food_Name%>: <%=e.food_quantity%> g</h5>
+                    <div class="horizontal">
+                        <div class="desc calories">
+                            <h5><%=e.Food_Calories%></h5>
+                            <h6>Calories</h6>
+                        </div>
+                        <div class="desc protein">
+                            <h5><%=e.Food_Protein%></h5>
+                            <h6>Protein</h6>
+                        </div>
+                        <div class="desc fats">
+                            <h5><%=e.Food_Fats%></h5>
+                            <h6>Fats</h6>
+                        </div>
+                        <div class="desc fats">
+                            <h5><%=e.Food_Carbs%></h5>
+                            <h6>Carbs</h6>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            <% }) %>      
+                    
+                    
+                    
+                    
+                   
+                </div>
+            </div>
+            
+           
+              
+              
+        </div>
+        
+      
+          <h1 class="hid" id="items"><%=totalItems%></h1>
+          <h1 class="hid" id="calories"><%=totalCalories%></h1>
+          <h1 class="hid" id="target"><%=target%></h1>
+          <h1 class="hid" id="remaining"><%=remaining%></h1>
+          <h1 class="hid" id="totalProtein"><%=totalProtein%></h1>
+          <h1 class="hid" id="totalCarbs"><%=totalCarbs%></h1>
+          <h1 class="hid" id="totalFats"><%=totalFats%></h1>
+    </article>
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/runTimeScripts/charts.js">
+</script>
+<%- include('../public/runTimeScripts/onHover.ejs') %>
+<style>
+    
+    .note{
+        background-image: url(/images/food1.jpg);
+        background-size: cover;
+        transition: all 0.4s;
+    }
+    .note:hover{
+        transition: all 0.4s;
+        transform: scale(1.2);
+    }
+</style>
+
+
+</html>

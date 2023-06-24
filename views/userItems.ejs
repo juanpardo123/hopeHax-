@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/style.css">
+    <title>Main</title>
+</head>
+<body>
+  <%- include('../public/runTimeScripts/theme.ejs') %>
+    <%- include('./partials/nav.ejs') %>
+
+    <%function roundNumber(num) {%>
+        <%   return num.toFixed(2).replace(/\.0+$/, '');} %>
+       
+    <article>
+        <p>Hello <%=userData.User_name%>!!</p>
+        <h1>Your list of Foods</h1>
+
+<% foodList.forEach(e=>{ %>
+
+    <div class="card">
+        <div class="holder">
+            <img src="<%=e.Food_Image%>" class="main-image">
+            <img src="<%=e.Food_Image%>" class="back-image">
+        </div>
+        <div class="vertical">
+            <h1><%= e.Food_Name%></h1>
+        <div class="horizontal">
+            <div class="desc calories">
+                <h3><%=roundNumber(Number(e.Food_Calories))%></h3>
+                <h4>Calories</h4>
+            </div>
+            <div class="desc protein">
+                <h3><%=roundNumber(Number(e.Food_Protein))%></h3>
+                <h4>Protein</h4>
+            </div>
+            <div class="desc fats">
+                <h3><%=roundNumber(Number(e.Food_Fats))%></h3>
+                <h4>Fats</h4>
+            </div>
+            <div class="desc fats">
+                <h3><%=roundNumber(Number(e.Food_Carbs))%></h3>
+                <h4>Carbs</h4>
+            </div>
+            
+        </div>
+        <h3>Quantity: <%=e.food_quantity%> grams</h3>
+        <form action="/listDelete" method="post">
+            <input type="text"  name="foodID" value="<%=e.food_entry_ID%>" readonly class="hid">
+            <input type="submit" value="Delete" class="add">
+        </form>
+        </div>
+        
+
+    </div>
+
+
+    <% })%>
+    <h1>Your list of Recipes</h1>
+
+<% if(userRecipes) {%>
+
+<% userRecipes.forEach(e=>{ %>
+
+    <div class="card">
+        <div class="holder">
+          <img src="<%=e.Recipe_Image%>" class="main-recipe-image" />
+        </div>
+        <div class="vertical">
+          <h1><%=e.Recipe_Name%></h1>
+          <h2>Meal Type: <%=e.Recipe_MealType%></h2>
+          <div class="horizontal">
+            <div class="desc calories">
+              <h3><%=Math.round(e.Recipe_Calories)%></h3>
+              <h4>Calories</h4>
+            </div>
+            <div class="desc protein">
+              <h3><%=Math.round(e.Recipe_TotalWeight)%></h3>
+              <h4>Total Weight</h4>
+            </div>
+            <div class="linkRecipes">
+              <a href="<%=e.Recipe_URL%>" id="linkRecipesUrl"
+                >Click To Learn!</a
+              >
+              <h4>Fats</h4>
+            </div>
+            <div class="desc fats">
+              <h3><%=e.Recipe_Yield%></h3>
+              <h4>Yields</h4>
+            </div>
+            <div class="recipe ingredients">
+                <h4>Ingredients</h4>
+                <%e.Recipe_Ingredients.split('|').forEach(txt=>{ %>
+
+              <p><%=txt  %></p>
+              <% }); %>
+            </div>
+          </div>
+
+          <!-- <form action="/recipes" method="GET">
+            <input
+              type="text"
+              name="query"
+              placeholder="What Kind of Recipe?"
+            />
+            <button type="submit" class="button2">Search</button>
+          </form> -->
+          <form action="/listDeleteRecipe" method="post">
+            <input type="text" name="recipeID" value="<%=e.RecipeID%>" class="hid" readonly>
+            <input type="submit" value="Delete" class="add" />
+          </form>
+        </div>
+      </div>
+
+
+<% })%>
+<% }%>
+    </article>
+</body>
+
+</html>

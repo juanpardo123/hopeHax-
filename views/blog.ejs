@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/style.css">
+    <title>Main</title>
+</head>
+<body>
+    <%- include('../public/runTimeScripts/theme.ejs') %>
+    <%- include('./partials/nav.ejs') %>
+    <article>
+        <p>Hello !!</p>
+        <h1>Search result:</h1>
+        <div class="card">
+            <h1>Comments</h1>
+            <!-- Form to add new comments -->
+            <form id="commentForm">
+              <textarea id="commentInput" placeholder="Enter your comment"></textarea>
+              <button type="submit">Submit</button>
+            </form>
+            <div id="commentContainer"></div>
+          
+            <script src="/runTimeScripts/blog.js"></script>
+
+        </div>
+        <style>
+                .comment {
+        margin-bottom: 10px;
+        padding: 5px;
+        border: 1px solid #ccc;
+    }
+        </style>
+    </article>
+</body>
+
+</html>

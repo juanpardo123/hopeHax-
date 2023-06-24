@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/style.css">
+    <title>Main</title>
+</head>
+<body>
+    <%- include('../public/runTimeScripts/theme.ejs') %>
+    <%- include('./partials/nav.ejs') %>
+    <article>
+        
+        <% if(data.length){%>
+            <p>No results found</p>
+            <h1>Did you mean???</h1>
+            <div class="horizontal-suggest">
+            <% data.forEach(e=>{ %>
+               
+                    <div class="card">
+                        <h2><%=e%></h2>
+                        <form action="/search" method="post">
+                            <input type="text" name="name" value="<%=e%>" class="hid" required>
+                            <input type="submit" class="button" value="go">
+                        </form>           
+            
+                    </div>
+                
+                   
+                <%})%>
+            </div>
+                <%}else{%>
+                    <p>No results or suggestions found</p>
+                    <h1>try again</h1>
+                    <% }%>
+        
+    </article>
+</body>
+
+</html>
