@@ -6,7 +6,7 @@ import bcrypt from 'bcrypt';
 //import axios. axios in this application is used to handle API requests.
 import axios from 'axios';
 
-import {getPostById, createPost ,editUserInfo,deleteRecipeByID, getfoodsByID, createUser, createFoods, getUsers, getUserInfo, createUserInfo, getUserIDByUserName, deleteFoodByID, getfoodsHistoryByID, createRecipeList, getRecipeByID, getPosts, getMessagesByPostID} from './database.js'
+import {getPostById, createPost ,editUserInfo,deleteRecipeByID, getfoodsByID, createUser, createFoods, getUsers, getUserInfo, createUserInfo, getUserIDByUserName, deleteFoodByID, getfoodsHistoryByID, createRecipeList, getRecipeByID, getPosts, getMessagesByPostID, createMessage} from './database.js'
 
 
 
@@ -101,11 +101,12 @@ app.post('/comment', async(req,res)=>{
   let postInfo = await getPostById(postID);
   createMessage(message,username, postID)
   let messages = await getMessagesByPostID(postID);
-  res.render('singlePost', {globalTheme:globalTheme,
-    postInfo:postInfo,
-  messages:messages,
-  postID:postID
-  })
+  // res.render('singlePost', {globalTheme:globalTheme,
+  //   postInfo:postInfo,
+  // messages:messages,
+  // postID:postID
+  // })
+  res.redirect('/');
 });
 
 

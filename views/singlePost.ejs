@@ -83,12 +83,12 @@
 
                   <div class="postMessage">
                     
-                    <div class="user">
-                        <a href="/profile"> <img src="/images/profile.svg" class="profile"></a>
-                        <h3> <%=e.UserName%></h3>
-                    </div>
                        
-                        <p class="messages"><%=e.Post_Message%></p>
+                        <p class="messages"><%=m.message%></p>
+                        <div class="user">
+                          <a href="/profile"> <img src="/images/profile.svg" class="profile"></a>
+                          <h3> <%=m.messagerUsername%></h3>
+                      </div>
                     
                   </div>
 
