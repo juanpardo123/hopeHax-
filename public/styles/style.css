@@ -912,7 +912,7 @@ svg:hover{
 }
 /* recipeItems styling  */
 .main-recipe-image {
-  border-radius: 30%;
+  border-radius: 10%;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 #linkRecipesUrl {
@@ -964,6 +964,19 @@ svg:hover{
 .hid-emoji{
   display: none;
 }
+.postMessage{
+  display: flex;
+    background: #ffe4c4b5;
+    padding: 25px;
+    border-radius: 20px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0px 0px 7px 0px #0000008f;
+}
+
 .text{
   display: flex;
     flex-direction: column;
@@ -994,4 +1007,56 @@ svg:hover{
 }
 textarea{
   border-radius: 12px;
+}
+.user{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+
+  margin-right: 10px;
+}
+.messages{
+  color: var(--accent2);
+    margin: 0;
+    border-radius: 10px;
+    width: 100%;
+    background: aliceblue;
+    padding: 20px;
+    box-shadow: 0px 0px 3px 0px #00000033;
+}
+.postMessage h3 {
+  margin: 0;
+}
+.postMessage{
+  width: 100%;
+}
+.timeStamp{
+  color: #5f5b5b8a;
+    margin: 10px;
+}
+.nutrients{
+  display: flex;
+    gap: 19px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.recipeTitle{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.recipeTitle h2{
+  font-size: 22px;
 }

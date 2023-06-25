@@ -13,15 +13,11 @@
     <article>
         <h1>Top posts:</h1>
 
-        <% allPosts.forEach(e=>{
+        <% postInfo.forEach(e=>{
             %>
 
 
             <div class="card">
-                <div class="recipeTitle">
-                    <h1><%=e.Recipe_Name%></h1>
-                <h2>Meal Type: <%=e.Recipe_MealType%></h2>
-                </div>
                 
                 <div class="holder">
                   
@@ -31,11 +27,26 @@
                     
                   <img src="<%=e.Recipe_Image%>" class="main-recipe-image" />
                     <div class="recipe ingredients">
-                        <h4>Ingredients</h4>
-                        <%e.Recipe_Ingredients.split('|').forEach(txt=>{ %>
-        
-                      <p><%=txt  %></p>
-                      <% }); %>
+                      <div class="recipeTitle">
+                        <h1><%=e.Recipe_Name%></h1>
+                    <h2>Meal Type: <%=e.Recipe_MealType%></h2>
+                    </div>
+                      <div class="nutrients">
+                        <div class="desc calories">
+                            <h3><%=Math.round(e.Recipe_Calories)%></h3>
+                            <h4>Calories</h4>
+                          </div>
+                          <div class="desc protein">
+                            <h3><%=Math.round(e.Recipe_TotalWeight)%></h3>
+                            <h4>Total Weight</h4>
+                          </div>
+                          <div class="linkRecipes">
+                          </div>
+                          <div class="desc fats">
+                            <h3><%=e.Recipe_Yield%></h3>
+                            <h4>Yields</h4>
+                          </div>
+                      </div>
                       <a href="<%=e.Recipe_URL%>" id="linkRecipesUrl"
                         >Click To Learn!</a
                       >
@@ -43,26 +54,7 @@
                 
                   </div>
                   
-                  <form action="/singlePost" method="post">
-                    <input type="text" name="postID" value="<%=e.PostID%>" class="hid" readonly>
-                    <input type="submit">
-                  </form>
-                  <div class="nutrients">
-                    <div class="desc calories">
-                        <h3><%=Math.round(e.Recipe_Calories)%></h3>
-                        <h4>Calories</h4>
-                      </div>
-                      <div class="desc protein">
-                        <h3><%=Math.round(e.Recipe_TotalWeight)%></h3>
-                        <h4>Total Weight</h4>
-                      </div>
-                      <div class="linkRecipes">
-                      </div>
-                      <div class="desc fats">
-                        <h3><%=e.Recipe_Yield%></h3>
-                        <h4>Yields</h4>
-                      </div>
-                  </div>
+                  
                 </div>
                 <div class="postMessage">
                     

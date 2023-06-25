@@ -6,7 +6,7 @@ import bcrypt from 'bcrypt';
 //import axios. axios in this application is used to handle API requests.
 import axios from 'axios';
 
-import { editUserInfo,deleteRecipeByID, getfoodsByID, createUser, createFoods, getUsers, getUserInfo, createUserInfo, getUserIDByUserName, deleteFoodByID, getfoodsHistoryByID, createRecipeList, getRecipeByID} from './database.js'
+import {getPostById, createPost ,editUserInfo,deleteRecipeByID, getfoodsByID, createUser, createFoods, getUsers, getUserInfo, createUserInfo, getUserIDByUserName, deleteFoodByID, getfoodsHistoryByID, createRecipeList, getRecipeByID, getPosts} from './database.js'
 
 
 
@@ -82,6 +82,13 @@ app.get('/', async (req,res)=>{
    
 })
 
+app.post('/singlePost', async(req,res)=>{
+  let postID = req.body.postID;
+  let postInfo = await getPostById(postID);
+  res.render('singlePost', {globalTheme:globalTheme,
+    postInfo:postInfo})
+})
+
 app.post('/shareRecepie', (req,res)=>{
   let recipeImage = req.body.recipeImage;
   let recipeName = req.body.recipeName;
@@ -106,7 +113,7 @@ app.post('/shareRecepie', (req,res)=>{
   });
 })
 
-app.post('/post', (req,res)=>{
+app.post('/post', async(req,res)=>{
   let recipeImage = req.body.recipeImage;
   let recipeName = req.body.recipeName;
   let mealType = req.body.mealType;
@@ -115,7 +122,11 @@ app.post('/post', (req,res)=>{
   let recipeYield = req.body.recipeYield;
   let recipeIngredients = req.body.recipeIngredients;
   let recipeURL = req.body.recipeURL;
-  
+  let post = req.body.post;
+  let username = globalUserData.User_name;
+  let recipeTotalTime = 0;
+  await createPost(globalUserID,recipeImage,recipeName,mealType,recipeCalories,recipeTotalWeight,recipeYield,recipeIngredients,recipeURL,post,recipeTotalTime, username);
+  res.redirect('blog');
 })
 
 //Handles post request for search. 
@@ -443,8 +454,15 @@ app.get('/aboutUs',(req,res)=>{
   res.render('about-us',{globalTheme:globalTheme});
 })
 
-app.get('/blog',(req,res)=>{
-  res.render('blog', {globalTheme:globalTheme});
+app.get('/blog',async(req,res)=>{
+  let allPosts = await getPosts();
+  console.log(allPosts);
+  console.log(globalUserData);
+  res.render('blog', 
+  {
+    globalTheme:globalTheme,
+    allPosts:allPosts
+  });
 })
 
 

@@ -63,6 +63,14 @@ export async function getUserIDByUserName(username){
     `, [username])
     return usernameInfo[0].ID;
 }
+export async function getPostById(id){
+    const [postInfo] = await pool.query(`
+    select *  
+    from userposts 
+    where PostID = ?
+    `, [id])
+    return postInfo;
+}
 
 
 export async function createUserInfo( ID,user_name, user_height, user_weight, user_target_calories, preferences){
@@ -181,6 +189,21 @@ export async function createRecipeList(User_ID,recipeName, recipeImage, recipeCa
     await pool.query(`
     INSERT INTO UserRecipes (User_ID,	Recipe_Name,	Recipe_Image,	Recipe_Calories,	Recipe_TotalWeight, Recipe_TotalTime, Recipe_Yield, Recipe_MealType, Recipe_URL, Recipe_Ingredients) VALUES (?, ?, ? ,?, ?,?,?,?,?,?)
    `, [User_ID,recipeName, recipeImage, recipeCalories, recipeTotalWeight, recipeTotalTime, recipeYield, recipeMealType, recipeURL, recipeIngredients]);
+}
+
+export async function createPost(UserID,recipeImage,recipeName,recipeMealType,recipeCalories,recipeTotalWeight,recipeYield,recipeIngredients,recipeURL,post,recipeTotalTime, username){   
+    await pool.query(`
+    INSERT INTO UserPosts (User_ID,	Recipe_Name,	Recipe_Image,	Recipe_Calories,	Recipe_TotalWeight, Recipe_TotalTime, Recipe_Yield, Recipe_MealType, Recipe_URL, Recipe_Ingredients, Post_Message, UserName ) VALUES (?, ?, ? ,?, ?,?,?,?,?,?,?,?)
+   `, [UserID,recipeName, recipeImage, recipeCalories, recipeTotalWeight, recipeTotalTime, recipeYield, recipeMealType, recipeURL, recipeIngredients, post, username]);
+}
+
+export async function getPosts(){
+    const [result] = await pool.query(`
+    select *
+    from userposts 
+   `)
+   return result;
+   ;
 }
 //delete food by ID
 
