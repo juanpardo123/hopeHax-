@@ -972,3 +972,26 @@ svg:hover{
     justify-content: center;
     align-items: center;
 }
+.hidden{
+  height: 0px;
+  width: 0px;
+  opacity: 0;
+  border-radius: 50px;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.show{
+  opacity: 1;
+  width: 100%;
+  border-radius: 13px;
+    overflow: hidden;
+  transition: all 0.3s;
+
+}
+.emoji-menu{
+  
+  transition: all 0.4s;
+}
+textarea{
+  border-radius: 12px;
+}
