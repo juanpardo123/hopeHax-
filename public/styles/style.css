@@ -281,7 +281,7 @@ width: 35vW;
 }
 .add:hover{
     transform: scale(1.1);
-  box-shadow: 0px 0px 20px 1px #00000087;
+    box-shadow: 0px 0px 4px 1px #00000087;
     transition: all 0.4s;
 }
 .button{
@@ -739,13 +739,14 @@ svg:hover{
 
 #linkRecipesUrl {
   text-decoration: none;
-  background-color: #eeeeee;
+  /* margin: 9px; */
+  background: rgba(181, 211, 190, 0.79);
   color: #333333;
   padding: 2px 6px 2px 6px;
-  border-top: 1px solid #cccccc;
-  border-right: 1px solid #333333;
-  border-bottom: 1px solid #333333;
-  border-left: 1px solid #cccccc;
+  font-size: 18px;
+  border: solid 1px #1a111029;
+  border-radius: 6px;
+  box-shadow: 0px 0px 15px 8px #c4dac845;
 }
 
 /* .favRecipesRows {
@@ -956,4 +957,18 @@ svg:hover{
   background: azure;
     border-style: double;
     border-radius: 5px;
+}
+.ingredients{
+  margin-bottom: 27px;
+}
+.hid-emoji{
+  display: none;
+}
+.text{
+  display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
 }

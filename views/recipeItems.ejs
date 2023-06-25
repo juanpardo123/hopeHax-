@@ -62,10 +62,6 @@
               <h4>Total Weight</h4>
             </div>
             <div class="linkRecipes">
-              <a href="<%=recipes[i].recipe.url%>" id="linkRecipesUrl"
-                >Click To Learn!</a
-              >
-              <h4>Fats</h4>
             </div>
             <div class="desc fats">
               <h3><%=recipes[i].recipe.yield%></h3>
@@ -80,6 +76,9 @@
 
               <p><%= ingredient.text %></p>
               <% }); %>
+              <a href="<%=recipes[i].recipe.url%>" id="linkRecipesUrl"
+                >View full recipe!</a
+              >
             </div>
           </div>
 

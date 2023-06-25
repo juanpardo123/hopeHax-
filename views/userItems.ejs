@@ -80,10 +80,6 @@
               <h4>Total Weight</h4>
             </div>
             <div class="linkRecipes">
-              <a href="<%=e.Recipe_URL%>" id="linkRecipesUrl"
-                >Click To Learn!</a
-              >
-              <h4>Fats</h4>
             </div>
             <div class="desc fats">
               <h3><%=e.Recipe_Yield%></h3>
@@ -95,21 +91,28 @@
 
               <p><%=txt  %></p>
               <% }); %>
+              <a href="<%=e.Recipe_URL%>" id="linkRecipesUrl"
+                >Click To Learn!</a
+              >
             </div>
+         
           </div>
-
-          <!-- <form action="/recipes" method="GET">
-            <input
-              type="text"
-              name="query"
-              placeholder="What Kind of Recipe?"
-            />
-            <button type="submit" class="button2">Search</button>
-          </form> -->
           <form action="/listDeleteRecipe" method="post">
             <input type="text" name="recipeID" value="<%=e.RecipeID%>" class="hid" readonly>
             <input type="submit" value="Delete" class="add" />
           </form>
+          <form action="/shareRecepie" method="post">
+            <input type="text" name="recipeImage" value="<%=e.Recipe_Image%>" class="hid" readonly>
+            <input type="text" name="recipeName" value="<%=e.Recipe_Name%>" class="hid" readonly>
+            <input type="text" name="mealType" value="<%=e.Recipe_MealType%>" class="hid" readonly>
+            <input type="text" name="recipeCalories" value="<%=e.Recipe_Calories%>" class="hid" readonly>
+            <input type="text" name="recipeTotalWeight" value="<%=e.Recipe_TotalWeight%>" class="hid" readonly>
+            <input type="text" name="recipeYield" value="<%=e.Recipe_Yield%>" class="hid" readonly>
+            <input type="text" name="recipeIngredients" value="<%=e.Recipe_Ingredients%>" class="hid" readonly>
+            <input type="text" name="recipeURL" value="<%=e.Recipe_URL%>" class="hid" readonly>
+            <input type="submit" value="Share Recepie!"class='<%=e.RecipeID%>' >
+          </form>
+
         </div>
       </div>
 

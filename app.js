@@ -82,6 +82,30 @@ app.get('/', async (req,res)=>{
    
 })
 
+app.post('/shareRecepie', (req,res)=>{
+  let recipeImage = req.body.recipeImage;
+  let recipeName = req.body.recipeName;
+  let mealType = req.body.mealType;
+  let recipeCalories = req.body.recipeCalories;
+  let recipeTotalWeight = req.body.recipeTotalWeight;
+  let recipeYield = req.body.recipeYield;
+  let recipeIngredients = req.body.recipeIngredients;
+  let recipeURL = req.body.recipeURL;
+  res.render('prepost',
+  {
+    globalTheme:globalTheme,
+    globalUserID:globalUserID,
+    recipeImage: recipeImage,
+    recipeName:recipeName,
+    mealType:mealType,
+    recipeCalories:recipeCalories,
+    recipeTotalWeight:recipeTotalWeight,
+    recipeYield:recipeYield,
+    recipeIngredients:recipeIngredients,
+    recipeURL:recipeURL
+  });
+})
+
 //Handles post request for search. 
 //  If user is logged in
       // the input on the search field is passed to the getItemApi function and if succesful renders 'singleItem'page with respective result and user info.
