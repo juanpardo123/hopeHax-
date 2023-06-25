@@ -65,10 +65,35 @@
                        
                         <p class="messages"><%=e.Post_Message%></p>
                     
-                    
-                 
                  </div>
                  <p class="timeStamp">Post date: <%=e.AddedTime%></p>
+                 <form action="/comment" method="post" class="message">
+                  <div class="commentBox">
+                    <textarea name="message" id="" cols="30" rows="10" class="comment" placeholder="Write your post" required></textarea>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="emoji-button"  id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="30" height="30"><path d="M12,0A12.013,12.013,0,0,0,0,12c.6,15.9,23.4,15.893,24,0A12.013,12.013,0,0,0,12,0Zm3.5,8a1.5,1.5,0,0,1,0,3A1.5,1.5,0,0,1,15.5,8Zm-7,0a1.5,1.5,0,0,1,0,3A1.5,1.5,0,0,1,8.5,8Zm9.342,7.542A6.827,6.827,0,0,1,12,19a6.836,6.836,0,0,1-5.848-3.458A1,1,0,0,1,7.2,14.024,15.4,15.4,0,0,0,12,15a15.4,15.4,0,0,0,4.792-.976A1,1,0,0,1,17.842,15.542Z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="emoji-close hid" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="30" height="30"><path d="m16.061,10.061l-1.939,1.939,1.939,1.939c.586.586.586,1.535,0,2.121-.293.293-.677.439-1.061.439s-.768-.146-1.061-.439l-1.939-1.939-1.939,1.939c-.293.293-.677.439-1.061.439s-.768-.146-1.061-.439c-.586-.586-.586-1.535,0-2.121l1.939-1.939-1.939-1.939c-.586-.586-.586-1.535,0-2.121s1.535-.586,2.121,0l1.939,1.939,1.939-1.939c.586-.586,1.535-.586,2.121,0s.586,1.535,0,2.121Zm7.939,1.939c0,6.617-5.383,12-12,12S0,18.617,0,12,5.383,0,12,0s12,5.383,12,12Zm-3,0c0-4.963-4.037-9-9-9S3,7.037,3,12s4.038,9,9,9,9-4.037,9-9Z"/></svg>
+                    <input type="text" name="postID" value="<%=postID%>" class="hid" readonly>
+                  </div>
+                  <input type="submit" class="add">
+                 </form>
+                 
+              
+              <emoji-picker class="emoji-menu hidden"></emoji-picker>
+                 <%messages.forEach(m=>{%>
+
+                  <div class="postMessage">
+                    
+                    <div class="user">
+                        <a href="/profile"> <img src="/images/profile.svg" class="profile"></a>
+                        <h3> <%=e.UserName%></h3>
+                    </div>
+                       
+                        <p class="messages"><%=e.Post_Message%></p>
+                    
+                  </div>
+
+
+                  <% })%>
               </div>
         
         
@@ -89,6 +114,9 @@
             <script src="/runTimeScripts/blog.js"></script>
 
         </div>
+
+        
+
         <style>
                 .comment {
         margin-bottom: 10px;
@@ -98,5 +126,29 @@
         </style>
     </article>
 </body>
+<script type="module">
+  import 'https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js'
+  import insertText from 'https://cdn.jsdelivr.net/npm/insert-text-at-cursor@0.3.0/index.js'
+  let emojiMenu = document.querySelector('emoji-picker');
+  let close = document.querySelector('.emoji-close');
+  let emoji = document.querySelector('.emoji-button');
+  emojiMenu.addEventListener('emoji-click', e => {
+    insertText(document.querySelector('.comment'), e.detail.unicode)
+  })
+
+  emoji.addEventListener('click',  function(){
+      emojiMenu.classList = 'emoji-menu show' 
+      close.classList = 'emoji-close'
+      emoji.classList = '.emoji-button hid'
+  }
+    )
+
+    close.addEventListener('click',  function(){
+      emojiMenu.classList = 'emoji-menu hidden' 
+      close.classList = 'emoji-close hid'
+      emoji.classList = '.emoji-button'
+  }
+    )
+</script>
 
 </html>

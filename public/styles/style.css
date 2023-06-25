@@ -1031,6 +1031,9 @@ textarea{
 .postMessage h3 {
   margin: 0;
 }
+.commentBox{
+  width: 100%;
+}
 .postMessage{
   width: 100%;
 }
@@ -1059,4 +1062,12 @@ textarea{
 }
 .recipeTitle h2{
   font-size: 22px;
+}
+textarea{
+  width: 93%;
+}
+.message{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
 }

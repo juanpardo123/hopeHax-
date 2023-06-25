@@ -6,7 +6,7 @@ import bcrypt from 'bcrypt';
 //import axios. axios in this application is used to handle API requests.
 import axios from 'axios';
 
-import {getPostById, createPost ,editUserInfo,deleteRecipeByID, getfoodsByID, createUser, createFoods, getUsers, getUserInfo, createUserInfo, getUserIDByUserName, deleteFoodByID, getfoodsHistoryByID, createRecipeList, getRecipeByID, getPosts} from './database.js'
+import {getPostById, createPost ,editUserInfo,deleteRecipeByID, getfoodsByID, createUser, createFoods, getUsers, getUserInfo, createUserInfo, getUserIDByUserName, deleteFoodByID, getfoodsHistoryByID, createRecipeList, getRecipeByID, getPosts, getMessagesByPostID} from './database.js'
 
 
 
@@ -85,9 +85,30 @@ app.get('/', async (req,res)=>{
 app.post('/singlePost', async(req,res)=>{
   let postID = req.body.postID;
   let postInfo = await getPostById(postID);
+  let messages = await getMessagesByPostID(postID);
   res.render('singlePost', {globalTheme:globalTheme,
-    postInfo:postInfo})
+    postInfo:postInfo,
+  messages:messages,
+  postID:postID
+  })
 })
+
+
+app.post('/comment', async(req,res)=>{
+  let postID = req.body.postID;
+  let message = req.body.message;
+  let username = globalUserData.User_name;
+  let postInfo = await getPostById(postID);
+  createMessage(message,username, postID)
+  let messages = await getMessagesByPostID(postID);
+  res.render('singlePost', {globalTheme:globalTheme,
+    postInfo:postInfo,
+  messages:messages,
+  postID:postID
+  })
+});
+
+
 
 app.post('/shareRecepie', (req,res)=>{
   let recipeImage = req.body.recipeImage;

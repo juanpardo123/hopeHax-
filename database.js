@@ -72,6 +72,21 @@ export async function getPostById(id){
     return postInfo;
 }
 
+export async function createMessage(message, username, postID){
+    const [postInfo] = await pool.query(`
+    INSERT INTO postMessages (postID,messagerUsername,message) VALUES (?, ?, ?)
+    
+    `, [postID,username,message])}
+
+
+    export async function getMessagesByPostID(postID){
+        const [messages] = await pool.query(`
+        select *
+        from postMessages
+        where postID = ?
+        `,[postID])
+    return messages;
+    }
 
 export async function createUserInfo( ID,user_name, user_height, user_weight, user_target_calories, preferences){
     await pool.query(`
