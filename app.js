@@ -1,6 +1,6 @@
 import bodyParser from 'body-parser';
 import express from 'express';
-
+import mailchimp from '@mailchimp/mailchimp_marketing';
 //imports bcrypt. bcrypt is used to hash and salt user passwords.
 import bcrypt from 'bcrypt';
 //import axios. axios in this application is used to handle API requests.
@@ -473,7 +473,7 @@ app.post("/recipeItems", async (req, res) => {
 });
 
 app.get('/aboutUs',(req,res)=>{
-  res.render('about-us',{globalTheme:globalTheme});
+  res.render('about-us');
 })
 
 app.get('/blog',async(req,res)=>{
@@ -489,3 +489,31 @@ app.get('/blog',async(req,res)=>{
 
 
 app.locals.userData = globalUserData;
+
+
+mailchimp.setConfig({
+  apiKey: 'e42be5b0774f3222a5d0e7cfd135e0aa-us21',
+  server: 'us21',
+});
+app.post('/subscribe', async function (req,res) {
+  const firstName = req.body.fName;
+  const lastName = req.body.lName;
+  const email = req.body.email;
+  // adding new contact to the audience , audience list id in in mailchimp
+  const listId = '1adb4d5de7';
+  const subscribingUser = {
+    firstName: firstName,
+    lastName: lastName,
+    email: email
+  };
+  //Uploading the data to the server
+    const response = await mailchimp.lists.addListMember(listId, {
+    email_address: subscribingUser.email,
+    status: 'subscribed',
+    merge_fields: {
+    FNAME: subscribingUser.fName,
+    LNAME: subscribingUser.lName
+    }
+    });
+    parseInt(response.status) == 200 ? res.redirect('/about-us') : res.sendStatus(500)
+  })
