@@ -65,6 +65,15 @@ export async function getUserIDByUserName(username){
     `, [username])
     return usernameInfo[0].ID;
 }
+
+export async function getUsernameById(id){
+    const [usernameInfo] = await pool.query(`
+    select  Username 
+    from UserLogins
+    where ID = ?
+    `, [username])
+    return usernameInfo[0].ID;
+}
 export async function getPostById(id){
     const [postInfo] = await pool.query(`
     select *  
