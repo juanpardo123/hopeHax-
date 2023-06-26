@@ -47,7 +47,7 @@ const ctx = document.getElementById('myChart');
       datasets: [{
        
         
-        data: [totalCarbs, totalCarbs,totalFats],
+        data: [totalProtein,totalCarbs ,totalFats],
         borderWidth: 1
       }],
       backgroundColor: [
