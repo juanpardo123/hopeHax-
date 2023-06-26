@@ -33,7 +33,7 @@ app.use( express.static( "public" ) );
 
 
 //creates server at specified port
-app.listen(process.env.PORT | PORT,()=>{
+app.listen(port,()=>{
     console.log(`listening at ${port}`);
 });
 
