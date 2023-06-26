@@ -14,11 +14,13 @@ const saltRounds = 10;
 
 //Creates connection to the SQL server
 const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: '123456789',
-    database: 'users'
+    host: 'us-cdbr-east-06.cleardb.net',
+    user: 'bb1bd03098cda2',
+    password: 'd0adc67f',
+    database: 'heroku_4452ddd73aec511'
 }).promise()
+
+//mysql://bb1bd03098cda2:d0adc67f@us-cdbr-east-06.cleardb.net/heroku_4452ddd73aec511?reconnect=true
 
 //function for adding new users to the SQL database.
 //Takes 2 parameters userName and password

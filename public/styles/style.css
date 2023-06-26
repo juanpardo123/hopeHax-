@@ -1071,3 +1071,11 @@ textarea{
   width: 100%;
   flex-direction: column;
 }
+.select{
+  background: var(--backdrop);
+  box-shadow: 0px 0px 0px 0px #ff1a4c00;
+}
+
+.center{
+  justify-content: center;
+}

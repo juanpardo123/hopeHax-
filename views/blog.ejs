@@ -43,10 +43,7 @@
                 
                   </div>
                   
-                  <form action="/singlePost" method="post">
-                    <input type="text" name="postID" value="<%=e.PostID%>" class="hid" readonly>
-                    <input type="submit">
-                  </form>
+                
                   <div class="nutrients">
                     <div class="desc calories">
                         <h3><%=Math.round(e.Recipe_Calories)%></h3>
@@ -77,6 +74,10 @@
                  
                  </div>
                  <p class="timeStamp">Post date: <%=e.AddedTime%></p>
+                 <form action="/singlePost" method="post">
+                    <input type="text" name="postID" value="<%=e.PostID%>" class="hid" readonly>
+                    <input type="submit" value="Go to Post" class="add select">
+                  </form>
               </div>
         
         
