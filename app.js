@@ -83,30 +83,34 @@ app.get('/', async (req,res)=>{
 })
 
 app.post('/singlePost', async(req,res)=>{
-  let postID = req.body.postID;
-  let postInfo = await getPostById(postID);
-  let messages = await getMessagesByPostID(postID);
-  res.render('singlePost', {globalTheme:globalTheme,
-    postInfo:postInfo,
-  messages:messages,
-  postID:postID
-  })
+  if(globalUserID){
+    let postID = req.body.postID;
+    let postInfo = await getPostById(postID);
+    let messages = await getMessagesByPostID(postID);
+    res.render('singlePost', {globalTheme:globalTheme,
+      postInfo:postInfo,
+    messages:messages,
+    postID:postID
+    })
+  }else{
+    res.render('login',{globalTheme:globalTheme});
+  }
+ 
 })
 
 
 app.post('/comment', async(req,res)=>{
-  let postID = req.body.postID;
-  let message = req.body.message;
-  let username = await getUsernameById(globalUserID);
-  let postInfo = await getPostById(postID);
-  createMessage(message,username, postID)
-  let messages = await getMessagesByPostID(postID);
-  // res.render('singlePost', {globalTheme:globalTheme,
-  //   postInfo:postInfo,
-  // messages:messages,
-  // postID:postID
-  // })
-  res.redirect('/');
+  if(globalUserID){
+    let postID = req.body.postID;
+    let message = req.body.message;
+    let username = await getUsernameById(globalUserID);
+    let postInfo = await getPostById(postID);
+    createMessage(message,username, postID)
+    let messages = await getMessagesByPostID(postID);
+  }else{
+    res.redirect('/');
+  }
+  
 });
 
 
@@ -357,7 +361,8 @@ app.post('/search', async (req, res) => {
 
 //ROUTE HANDLING
 app.get("/recipes", async (req, res) => {
-  const query = req.query.query; //grabbing query parameter from request
+  if(globalUserID){
+    const query = req.query.query; //grabbing query parameter from request
   try {
     const recipes = await getRecipes(query);
     if (recipes.length > 0) {
@@ -369,6 +374,10 @@ app.get("/recipes", async (req, res) => {
     ///console.log(error);
     res.status(500).send("ERROR ERROR ERROR");
   }
+  }else{
+    res.redirect('/')
+  }
+  
 });
 //------------API's---------------
 
@@ -443,6 +452,7 @@ async function getRecipes(query) {
 }
 //ROUTE HANDLING
 app.get("/recipes", async (req, res) => {
+  
   const query = req.query.query; //grabbing query parameter from request
   try {
     const recipes = await getRecipes(query);
@@ -473,11 +483,12 @@ app.post("/recipeItems", async (req, res) => {
 });
 
 app.get('/aboutUs',(req,res)=>{
-  res.render('about-us');
+  res.render('aboutUs');
 })
 
 app.get('/blog',async(req,res)=>{
-  let allPosts = await getPosts();
+  if(globalUserID){
+    let allPosts = await getPosts();
   console.log(allPosts);
   console.log(globalUserData);
   res.render('blog', 
@@ -485,16 +496,29 @@ app.get('/blog',async(req,res)=>{
     globalTheme:globalTheme,
     allPosts:allPosts
   });
+  }else{
+    res.redirect('/')
+  }
+  
 })
 
+app.get("*",(req,res)=>{
+  res.render('error')
+})
 
 app.locals.userData = globalUserData;
 
 
+// mailchimp.setConfig({
+//   apiKey: '9773e7a2308bd77fdf87981b7c41c170-us21',
+//   server: 'us21',
+// });
+
 mailchimp.setConfig({
-  apiKey: 'e42be5b0774f3222a5d0e7cfd135e0aa-us21',
-  server: 'us21',
-});
+    apiKey: '0e921fe221f63668c6f6f89ac3338c8d-us21',
+    server: 'us21',
+  });
+
 app.post('/subscribe', async function (req,res) {
   const firstName = req.body.fName;
   const lastName = req.body.lName;
@@ -515,5 +539,13 @@ app.post('/subscribe', async function (req,res) {
     LNAME: subscribingUser.lName
     }
     });
-    parseInt(response.status) == 200 ? res.redirect('/about-us') : res.sendStatus(500)
+
+    console.log(response)
+    if ( parseInt(response.status) == 200){
+      res.redirect('/aboutUs')
+    }
+   
+    res.redirect('/aboutUs')
   })
+
+
