@@ -515,7 +515,7 @@ app.locals.userData = globalUserData;
 // });
 
 mailchimp.setConfig({
-    apiKey: '0e921fe221f63668c6f6f89ac3338c8d-us21',
+    apiKey: '852adecce82deed9e0f29669ba69e37b-us21',
     server: 'us21',
   });
 
