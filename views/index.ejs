@@ -83,6 +83,7 @@
                 <div class="card food-history">
                     <h1>Food history</h1>
                     <p>recently added</p>
+            <% if(foodData.length > 0 ){%>
              <% foodData.forEach(e=>{ %>
                 <div class="food-holder">
                     <h5><%=e.Food_Name%>: <%=e.food_quantity%> g</h5>
@@ -107,10 +108,12 @@
                     </div>
                     
                 </div>
-            <% }) %>      
+            <% }) } else{%>      
+                    
+                        <h3>No Items to display</h3>
                     
                     
-                    
+                    <%}%>
                     
                    
                 </div>

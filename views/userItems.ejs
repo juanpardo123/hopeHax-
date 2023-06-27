@@ -16,7 +16,7 @@
     <article>
         <p>Hello <%=userData.User_name%>!!</p>
         <h1>Your list of Foods</h1>
-
+<% if (foodList.length > 0){%>
 <% foodList.forEach(e=>{ %>
 
     <div class="card">
@@ -56,10 +56,15 @@
     </div>
 
 
-    <% })%>
+    <% }) }else{%>
+      <div class="card">
+        <h3>No items to display</h3>
+      </div>
+      
+      <%}%>
     <h1>Your list of Recipes</h1>
 
-<% if(userRecipes) {%>
+<% if(userRecipes.length > 0 ) {%>
 
 <% userRecipes.forEach(e=>{ %>
 
@@ -122,7 +127,11 @@
 
 
 <% })%>
-<% }%>
+<% }else{%>
+  <div class="card">
+    <h3>No items to display</h3>
+  </div>
+  <%}%>
     </article>
 </body>
 
