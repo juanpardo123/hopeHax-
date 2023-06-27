@@ -304,6 +304,11 @@ width: 35vW;
 .recipeButtonsContainer {
   display: flex;
   justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+
 }
 .rb {
   width: 160px;
@@ -394,14 +399,11 @@ width: 35vW;
 }
 /* side section */
 #recipeCatalog {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  background: rgba(217, 217, 217, 0.37);
-  box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.17);
-  border-radius: 88px;
-  left: 700px;
-  margin-top: 200px;
+  background: #f5f7fb9c;
+    box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.17);
+    border-radius: 88px;
+    padding: 2rem;
+    text-align: center;
 }
 .recipeCatalogText {
   text-align: center;
@@ -700,13 +702,10 @@ svg:hover{
 }
 
 #recipeCatalog {
-  position: relative;
   /*  display: flex;
   align-items: center;
   flex-wrap: wrap;
   flex-direction: column; */
-  width: 400px;
-  height: 500px;
   background: rgba(255, 67, 91, 0.79);
   box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.17);
   border-radius: 88px;
@@ -722,9 +721,11 @@ svg:hover{
   margin-top: 2rem;
 }
 #recipeTopSection {
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 90px;
+  text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 80%;
 }
 
 #linkRecipesUrl {
@@ -752,24 +753,20 @@ svg:hover{
   margin: 20px;
   width: 300px;
   height: 400px;
+  padding: 1rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   border-radius: 88px;
 }
 .favRecipesCards:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  background: rgba(255, 67, 91, 0.79);
+  transform: scale(1.5);
+  background: rgb(255 255 255 / 90%);
 }
 .favRecipeHolder {
   padding: 2px 16px;
 }
-.favImage {
-  height: 150px;
-  width: 150px;
-  top: 0px;
-  right: 0px;
-  border-radius: 5px 5px 0 0;
-}
+
 .favRecipesCardsContainer {
   display: flex;
 }
@@ -823,10 +820,6 @@ svg:hover{
 }
 
 #recipeCatalog {
-  position: relative;
-  width: 400px;
-  height: 500px;
-  bottom: 760px;
   background: #f5f7fb9c;
   box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.17);
   border-radius: 88px;
@@ -840,14 +833,7 @@ svg:hover{
   box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.17);
   border-radius: 48px;
 }
-#recipeTopSection {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
 
-  width: 950px;
-}
 #favRecipeText {
   text-align: center;
 }
@@ -860,14 +846,11 @@ svg:hover{
   width: 300px;
   height: 400px;
   background-color: #f5f7fb9c;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 13px 0 rgb(0 0 0 / 49%);
   transition: 0.3s;
-  border-radius: 88px;
+  border-radius: 40px;
 }
-.favRecipesCards:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  background: rgba(255, 67, 91, 0.79);
-}
+
 .favRecipeHolder {
   padding: 2px 16px;
 }
@@ -875,21 +858,31 @@ svg:hover{
   height: 150px;
   width: 150px;
   margin: 30px;
-  border-radius: 180px;
+  border-radius: 11px;
   top: 0px;
   right: 0px;
-  border-radius: 5px 5px 0 0;
-  box-shadow: 0px 0px 20px 1px #00000087;
+  /* border-radius: 5px 5px 0 0; */
+  box-shadow: 0px 0px 12px 2px #00000038;
 }
 .favRecipesCardsContainer {
   display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
 }
 .recipeText {
   font-size: 12px;
   text-align: center;
 }
 #recipeMidSection {
-  height: 600px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
 }
 /* recipeItems styling  */
 .main-recipe-image {
@@ -1112,9 +1105,9 @@ padding: 5px;
 text-decoration: none;
 color:teal;
 }
-/ newsletter /
+
 .newsletter{
-background-color:teal;
+background-color:var(--backdrop);
 display: flex;
 justify-content: center;
 padding:5px;
@@ -1147,22 +1140,34 @@ padding:10px;
 border-radius: 5px;
 padding:10px;
 }
-/ meet the team  /
+
 .team-container{
-padding:5%;
-display: flex;
-flex-direction: row;
-align-items: center;
-justify-content: space-between;
+  padding: 5%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-content: center;
 }
 .team-container img{
 width: 200px;
 height: 150px;
 border-radius: 50%;
 }
+.team-container div{
+  margin: 10px;
+}
 .newsletter img{
 width: 100px;
 height: 100px;
+}
+.arrow{
+  position: absolute;
+  bottom: 13px;
+  left: 220px;
+  z-index: 2;
+  fill: aliceblue;
 }
 
 

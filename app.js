@@ -483,7 +483,7 @@ app.post("/recipeItems", async (req, res) => {
 });
 
 app.get('/aboutUs',(req,res)=>{
-  res.render('aboutUs');
+  res.render('aboutUs', {globalTheme:globalTheme});
 })
 
 app.get('/blog',async(req,res)=>{
