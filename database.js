@@ -79,8 +79,8 @@ export async function getUsernameById(id){
     select  Username 
     from UserLogins
     where ID = ?
-    `, [username])
-    return usernameInfo[0].ID;
+    `, [id])
+    return usernameInfo;
 }
 export async function getPostById(id){
     const [postInfo] = await pool.query(`
