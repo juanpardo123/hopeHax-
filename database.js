@@ -80,7 +80,8 @@ export async function getUsernameById(id){
     from UserLogins
     where ID = ?
     `, [id])
-    return usernameInfo;
+    console.log(usernameInfo[0].Username);
+    return usernameInfo[0].Username;
 }
 export async function getPostById(id){
     const [postInfo] = await pool.query(`
@@ -185,6 +186,7 @@ export async function getRecipeByID(id){
     order by AddedTime desc
 
     `, [id]);
+   
     return result;
 }
 
